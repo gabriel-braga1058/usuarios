@@ -21,4 +21,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-route::get('admin/dasboard', [HomeController::class,'index'])->middleware(['auth', 'admin']);
+route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['auth', 'admin']);
+
+route::get('/conta-conta', [HomeController::class,'create'])->name('conta.crate');
+route::get('/store-conta', [HomeController::class,'store'])->name('conta.store');
+route::post('/show-conta', [HomeController::class,'show'])->name('conta.show');
+route::get('/edit-conta', [HomeController::class,'edit'])->name('conta.edit');
+route::put('/update-conta', [HomeController::class,'update'])->name('conta.update');
+route::get('/destroy-conta', [HomeController::class,'destroy'])->name('conta.destroy');

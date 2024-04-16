@@ -11,4 +11,34 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function create()
+    {
+
+    }
+
+    public function store()
+    {
+
+    }
+
+    public function show()
+    {
+        
+    }
+
+    public function edit()
+    {
+        
+    }
+
+    public function update()
+    {
+        
+    }
+
+    public function destroy()
+    {
+        
+    }
 }
