@@ -8,6 +8,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+route::get('/', [HomeController::class,'inicio'])->name('conta.inicio');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -18,14 +20,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
 require __DIR__.'/auth.php';
 
 
-route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['auth', 'admin']);
+route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');;
 
-route::get('/conta-conta', [HomeController::class,'create'])->name('conta.crate');
-route::get('/store-conta', [HomeController::class,'store'])->name('conta.store');
-route::post('/show-conta', [HomeController::class,'show'])->name('conta.show');
-route::get('/edit-conta', [HomeController::class,'edit'])->name('conta.edit');
-route::put('/update-conta', [HomeController::class,'update'])->name('conta.update');
-route::get('/destroy-conta', [HomeController::class,'destroy'])->name('conta.destroy');
+route::get('admin/create', [HomeController::class,'create'])->middleware(['auth', 'admin'])->name('admin.create');
+route::post('admin/store', [HomeController::class,'store'])->middleware(['auth', 'admin'])->name('admin.store');
+route::get('admin/show', [HomeController::class,'show'])->middleware(['auth', 'admin'])->name('admin.show');
+route::get('admin/edit', [HomeController::class,'edit'])->middleware(['auth', 'admin'])->name('admin.edit');
+route::put('admin/update', [HomeController::class,'update'])->name('admin.update');
+route::get('admin/destroy', [HomeController::class,'destroy'])->name('admin.destroy');

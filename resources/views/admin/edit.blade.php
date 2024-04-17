@@ -25,15 +25,7 @@
                 <div class="p-3 text-gray-900">
                     {{ __("Você está logado!") }}
                 </div>
-                <div class="list-group">
-                    <a href="{{ url('admin/create') }}" class="list-group-item list-group-item-action list-group-item-success">criar</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Deletar</a>
-                    <a href="{{ url('admin/show') }}" class="list-group-item list-group-item-action list-group-item-primary">visualizar</a>
-
-                </div>
-                <div class="p-3 text-gray-900">
-                    
-                </div>
+                
             </div>
         </div>
     </div>
