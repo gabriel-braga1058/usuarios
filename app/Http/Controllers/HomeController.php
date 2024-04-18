@@ -24,24 +24,13 @@ class HomeController extends Controller
     }
 
     public function store(Request $request)
+
     {
-        $request->validate([
-            'imagem' => 'nullable|mimes:png,jpg,jpeg,webp',
-        ]);
+        dd($request->nome);
+        HomeController::create($request->all());
 
-        if($request->has('imagem')) {
-            $file = $request->file('imagem');
-            $extension =$file->getClientOriginalExtension();
 
-            $filename = time().'.'.$extension;
-            $path = 'uploads/fotos';
-            $file->move($path, $filename);
-
-            HomeController::create([
-                'imagem' => $path.$filename,
-            ]);
-;        }
-            return redirect()->route('admin.show')->with('suceess', 'Conta cadastrada com sucesso');
+        return redirect()->route('admin.show')->with('suceess', 'Conta cadastrada com sucesso');
     }
 
     public function show()
@@ -51,16 +40,13 @@ class HomeController extends Controller
 
     public function edit()
     {
-        
     }
 
     public function update()
     {
-        
     }
 
     public function destroy()
     {
-        
     }
 }

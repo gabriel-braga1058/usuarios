@@ -20,16 +20,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('auth', 'admin')->group(function () {
+    Route::get('admin/dashboard', [HomeController::class,'index'])->name('admin.dashboard');;
+
+    Route::get('admin/create', [HomeController::class,'create'])->name('admin.create');
+    Route::post('admin/store', [HomeController::class,'store'])->name('admin.store');
+    Route::get('admin/show', [HomeController::class,'show'])->name('admin.show');
+    Route::get('admin/edit', [HomeController::class,'edit'])->name('admin.edit');
+    Route::put('admin/update', [HomeController::class,'update'])->name('admin.update');
+    Route::get('admin/destroy', [HomeController::class,'destroy'])->name('admin.destroy');
+});
 
 
 require __DIR__.'/auth.php';
 
 
-route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');;
-
-route::get('admin/create', [HomeController::class,'create'])->middleware(['auth', 'admin'])->name('admin.create');
-route::post('admin/store', [HomeController::class,'store'])->middleware(['auth', 'admin'])->name('admin.store');
-route::get('admin/show', [HomeController::class,'show'])->middleware(['auth', 'admin'])->name('admin.show');
-route::get('admin/edit', [HomeController::class,'edit'])->middleware(['auth', 'admin'])->name('admin.edit');
-route::put('admin/update', [HomeController::class,'update'])->name('admin.update');
-route::get('admin/destroy', [HomeController::class,'destroy'])->name('admin.destroy');

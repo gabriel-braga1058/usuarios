@@ -34,13 +34,10 @@
 
 
 
-                                <form action="{{ url('admin/store')}}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('admin.store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row g-3">
-                                        <div class="mb-3">
-                                            <label for="formFile" class="form-label">img</label>
-                                            <input class="form-control" id="image" name="imagem" type="file" id="formFile">
-                                        </div>
+
 
                                         <div>
                                             <label for="firstName" class="form-label">Título do Conteúdo:</label>
@@ -60,7 +57,10 @@
 
                                         </div>
 
-
+                                        <!-- <div class="mb-3">
+                                            <label for="formFile" class="form-label">img</label>
+                                            <input class="form-control" id="image" name="imagem" type="file" id="formFile">
+                                        </div> -->
 
                                         <button class="w-100 btn btn-primary btn-lg" type="submit">Criar</button>
                                     </div>
