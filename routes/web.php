@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,14 +23,16 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth', 'admin')->group(function () {
-    Route::get('admin/dashboard', [HomeController::class,'index'])->name('admin.dashboard');;
+    Route::get('admin/dashboard', [HomeController::class,'index'])->name('admin.dashboard');
 
-    Route::get('admin/create', [HomeController::class,'create'])->name('admin.create');
-    Route::post('admin/store', [HomeController::class,'store'])->name('admin.store');
-    Route::get('admin/show', [HomeController::class,'show'])->name('admin.show');
-    Route::get('admin/edit', [HomeController::class,'edit'])->name('admin.edit');
-    Route::put('admin/update', [HomeController::class,'update'])->name('admin.update');
-    Route::get('admin/destroy', [HomeController::class,'destroy'])->name('admin.destroy');
+    Route::get('admin/products', [ProductController::class,'index'])->name('admin.products');
+    Route::get('admin/products/create', [ProductController::class,'create'])->name('admin/products/create');
+    Route::post('admin/products/store', [ProductController::class,'store'])->name('admin/products/store');
+    Route::get('admin/products/show', [ProductController::class,'show'])->name('admin/products/show');
+
+
+
+   
 });
 
 
